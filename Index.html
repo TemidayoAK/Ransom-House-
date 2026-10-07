@@ -1,180 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Ransom House Community Church — Chat</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Ransom House Community Church — Ask Us</title>
 <style>
-  :root{
-    --maroon:#6E1F2A; --gold:#C9A24A; --cream:#FAF5EC; --ink:#2A1F1A; --line:#E6D9C4;
-    box-sizing:border-box;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  *{box-sizing:inherit;}
-  html,body{height:100%; margin:0;}
-  body{
-    background:var(--cream); color:var(--ink); font-family:'Work Sans', system-ui, sans-serif;
-    display:flex; align-items:flex-end; justify-content:flex-end; padding:24px;
-  }
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --cream:#211814; --ink:#F3E9DC; --line:#4A3A30; } body{background:var(--cream);} }
-  :root[data-theme="dark"]{ --cream:#211814; --ink:#F3E9DC; --line:#4A3A30; }
-
-  .launcher{
-    width:60px; height:60px; border-radius:50%; background:var(--maroon); color:#fff;
-    border:none; font-size:24px; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,.2);
-    display:flex; align-items:center; justify-content:center;
-  }
-  .launcher.hide{display:none;}
-
-  .panel{
-    width:360px; max-width:calc(100vw - 32px); height:560px; max-height:calc(100vh - 32px);
-    background:var(--cream); border:1px solid var(--line); border-radius:14px;
-    display:none; flex-direction:column; overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,.22);
-  }
-  .panel.open{display:flex;}
-
-  .head{
-    background:var(--maroon); color:#fff; padding:16px 18px; display:flex; align-items:center; gap:10px;
-  }
-  .head .crest{
-    width:34px; height:34px; border-radius:50%; background:var(--gold); color:var(--maroon);
-    display:flex; align-items:center; justify-content:center; font-family:'Fraunces'; font-weight:600; font-size:16px; flex:none;
-  }
-  .head h1{font-family:'Fraunces'; font-size:15px; font-weight:600; margin:0; line-height:1.25;}
-  .head p{font-size:12px; margin:2px 0 0; opacity:.85;}
-  .head .close{margin-left:auto; background:none; border:none; color:#fff; font-size:20px; cursor:pointer; padding:4px;}
-
-  .msgs{flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:10px;}
-  .msg{max-width:82%; padding:10px 13px; border-radius:12px; font-size:14px; line-height:1.5;}
-  .msg.bot{background:#fff; border:1px solid var(--line); align-self:flex-start; border-bottom-left-radius:3px;}
-  .msg.user{background:var(--maroon); color:#fff; align-self:flex-end; border-bottom-right-radius:3px;}
-
-  .quick{display:flex; flex-wrap:wrap; gap:8px; padding:0 16px 12px;}
-  .chip{
-    border:1px solid var(--maroon); color:var(--maroon); background:none; border-radius:999px;
-    font-size:12.5px; padding:7px 12px; cursor:pointer; font-family:'Work Sans';
-  }
-  .chip:hover{background:var(--maroon); color:#fff;}
-
-  .inputRow{display:flex; gap:8px; padding:12px 14px; border-top:1px solid var(--line); background:#fff;}
-  .inputRow input{
-    flex:1; border:1px solid var(--line); border-radius:999px; padding:10px 14px; font-size:14px;
-    font-family:'Work Sans'; background:var(--cream); color:var(--ink);
-  }
-  .inputRow input:focus{outline:2px solid var(--maroon); outline-offset:1px;}
-  .inputRow button{
-    background:var(--maroon); color:#fff; border:none; border-radius:999px; padding:0 16px;
-    font-weight:600; font-size:13px; cursor:pointer;
-  }
+:root{
+  --navy:#1E2A4A; --navy-2:#2C3E6B; --gold:#C9A24B; --gold-light:#FBF4E2;
+  --bg:#F6F5F1; --card:#fff; --text:#1F2937; --muted:#6B7280; --border:#E5E3DC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);display:flex;justify-content:center}
+.app{width:100%;max-width:720px;height:100vh;height:100dvh;display:flex;flex-direction:column;background:var(--card);box-shadow:0 0 40px rgba(0,0,0,.08)}
+header{background:var(--navy);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px}
+.logo{width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex-shrink:0}
+header h1{font-size:16px;font-weight:600;line-height:1.2}
+header p{font-size:12px;opacity:.8;margin-top:2px}
+#status{margin-left:auto;font-size:11px;opacity:.75;text-align:right}
+#messages{flex:1;overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:12px;background:var(--bg)}
+.msg{max-width:86%;padding:11px 14px;border-radius:16px;font-size:14.5px;line-height:1.5;word-wrap:break-word;animation:pop .2s ease}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.bot{background:var(--card);border:1px solid var(--border);border-bottom-left-radius:4px;align-self:flex-start}
+.user{background:var(--navy-2);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.msg a{color:var(--navy-2);font-weight:600}
+.user a{color:#fff}
+.item{padding:8px 0;border-bottom:1px dashed var(--border)}
+.item:last-child{border-bottom:none;padding-bottom:0}
+.item:first-child{padding-top:0}
+.item b{display:block}
+.meta{font-size:12.5px;color:var(--muted)}
+.typing{display:flex;gap:4px;padding:14px 16px}
+.typing span{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:bounce 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+#chips{display:flex;gap:8px;flex-wrap:wrap;padding:10px 16px;background:var(--bg);border-top:1px solid var(--border)}
+.chip{border:1.5px solid var(--gold);background:var(--gold-light);color:var(--navy);padding:7px 13px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.chip:hover{background:var(--gold);}
+form{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--border);background:var(--card)}
+input{flex:1;padding:12px 14px;border:1.5px solid var(--border);border-radius:24px;font-size:15px;font-family:inherit;outline:none}
+input:focus{border-color:var(--gold)}
+button.send{background:var(--navy);color:#fff;border:none;border-radius:24px;padding:0 20px;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit}
+button.send:disabled{opacity:.5}
 </style>
 </head>
 <body>
-
-<button class="launcher" id="launcher" onclick="openChat()" aria-label="Open chat">💬</button>
-
-<div class="panel" id="panel">
-  <div class="head">
-    <div class="crest">RH</div>
+<div class="app">
+  <header>
+    <div class="logo">R</div>
     <div>
-      <h1>The Ransom House<br>Community Church</h1>
-      <p>Usually replies in a few minutes</p>
+      <h1>The Ransom House Community Church</h1>
+      <p>Ask about services, events, and more</p>
     </div>
-    <button class="close" onclick="closeChat()" aria-label="Close chat">✕</button>
-  </div>
-  <div class="msgs" id="msgs"></div>
-  <div class="quick" id="quick"></div>
-  <div class="inputRow">
-    <input id="inputBox" type="text" placeholder="Ask a question..." onkeydown="if(event.key==='Enter')sendTyped()">
-    <button onclick="sendTyped()">Send</button>
-  </div>
+    <div id="status">Loading…</div>
+  </header>
+  <div id="messages" aria-live="polite"></div>
+  <div id="chips"></div>
+  <form id="form" autocomplete="off">
+    <input id="input" type="text" placeholder="Type your question…" aria-label="Your question"/>
+    <button class="send" type="submit">Send</button>
+  </form>
 </div>
 
 <script>
-/* ---- Editable church info: update these before going live ---- */
-const CHURCH = {
-  serviceTimes: "Sundays at 9:00 AM and 11:00 AM, with Wednesday Bible Study at 6:30 PM.",
-  location: "[Your church address here] — street parking and a side-lot are available.",
-  nextEvent: "[Name your next event, date and time here].",
-  contact: "You can reach the church office at [phone number] or [email address].",
-  prayer: "We'd love to pray with you. Leave your request here and a member of our prayer team will follow up, or call the office directly at [phone number]."
+/* ═════════════ CONFIG — edit these ═════════════ */
+const CONFIG = {
+  // Long ID from your Google Sheet URL: docs.google.com/spreadsheets/d/<THIS PART>/edit
+  SHEET_ID: 'PASTE_YOUR_SHEET_ID_HERE',
+  // Tab names in the Sheet (must match exactly)
+  TABS: {
+    service_times: 'ServiceTimes',
+    events: 'Events',
+    staff: 'Staff',
+    faqs: 'FAQs',
+    announcements: 'Announcements'
+  },
+  REFRESH_MINUTES: 5,
+  CHURCH_CONTACT: '',          // e.g. 'info@ransomhouse.org or +234 800 000 0000' (shown when the bot can't answer)
+  WELCOME: 'Welcome to The Ransom House Community Church! 👋 How can I help you today?'
 };
+/* ═══════════════════════════════════════════════ */
 
-const rules = [
-  { keys:["time","when","sunday","service"], reply: () => "Our services: " + CHURCH.serviceTimes },
-  { keys:["where","address","location","direction","park"], reply: () => "We're located at " + CHURCH.location },
-  { keys:["event","upcoming","happening","calendar"], reply: () => "Coming up: " + CHURCH.nextEvent },
-  { keys:["contact","phone","email","call","reach"], reply: () => CHURCH.contact },
-  { keys:["pray","prayer","struggling","need help"], reply: () => CHURCH.prayer },
-  { keys:["give","giving","donate","tithe","offering"], reply: () => "Giving options are available at the Welcome Desk on Sundays, or ask about our online giving link when you call the office." },
-  { keys:["kids","children","nursery"], reply: () => "We have programs for children during both Sunday services — ask at the Welcome Desk when you arrive and a volunteer will walk you over." },
-  { keys:["new","visit","first time"], reply: () => "Welcome! Just head to the Welcome Desk when you arrive — someone will greet you and help you find a seat." }
-];
+let DATA = { service_times: [], events: [], staff: [], faqs: [], announcements: [] };
 
-const fallback = "I don't have an answer for that yet — please call the church office at [phone number], or try asking about service times, location, or upcoming events.";
+/* ── CSV parsing (handles quotes and commas inside cells) */
+function parseCSV(text) {
+  const rows = []; let row = [], cell = '', q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) {
+      if (c === '"' && text[i+1] === '"') { cell += '"'; i++; }
+      else if (c === '"') q = false;
+      else cell += c;
+    } else if (c === '"') q = true;
+    else if (c === ',') { row.push(cell); cell = ''; }
+    else if (c === '\n' || c === '\r') {
+      if (c === '\r' && text[i+1] === '\n') i++;
+      row.push(cell); rows.push(row); row = []; cell = '';
+    } else cell += c;
+  }
+  if (cell.length || row.length) { row.push(cell); rows.push(row); }
+  if (!rows.length) return [];
+  const headers = rows[0].map(h => h.trim());
+  return rows.slice(1)
+    .filter(r => r.some(v => v.trim()))
+    .map(r => Object.fromEntries(headers.map((h, i) => [h, (r[i] || '').trim()])));
+}
 
-const quickOptions = [
-  {label:"Service times", key:"time"},
-  {label:"Location", key:"where"},
-  {label:"Upcoming events", key:"event"},
-  {label:"Prayer request", key:"pray"}
-];
+/* ── Dates */
+function parseDate(v) {
+  v = (v || '').trim(); if (!v) return null;
+  let m = v.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+  if (m) return new Date(+m[1], +m[2]-1, +m[3]);
+  m = v.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{4})$/);       // day/month/year
+  if (m) return new Date(+m[3], +m[2]-1, +m[1]);
+  const d = new Date(v);
+  return isNaN(d) ? null : new Date(d.getFullYear(), d.getMonth(), d.getDate());
+}
+const today = () => { const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); };
+const fmtDate = d => d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
 
-function openChat(){
-  document.getElementById('panel').classList.add('open');
-  document.getElementById('launcher').classList.add('hide');
-  if(!document.getElementById('msgs').children.length){
-    addMsg("Welcome to The Ransom House Community Church 🙏 How can I help you today?", 'bot');
-    renderQuick();
+const isActive = r => !('Active' in r) || ['y','yes','true','1'].includes((r.Active||'').toLowerCase());
+
+/* ── Load data from Google Sheet (tab → CSV) */
+async function fetchTab(name) {
+  const url = `https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(name)}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(name + ' ' + res.status);
+  return parseCSV(await res.text());
+}
+
+async function loadData(initial) {
+  const status = document.getElementById('status');
+  try {
+    const entries = await Promise.all(
+      Object.entries(CONFIG.TABS).map(async ([k, tab]) => [k, await fetchTab(tab)])
+    );
+    entries.forEach(([k, rows]) => DATA[k] = rows);
+    localStorage.setItem('rh_cache', JSON.stringify({ t: Date.now(), data: DATA }));
+    status.textContent = 'Updated ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  } catch (e) {
+    const cached = JSON.parse(localStorage.getItem('rh_cache') || 'null');
+    if (cached) { DATA = cached.data; status.textContent = 'Offline copy'; }
+    else status.textContent = 'Data unavailable';
+    console.warn('Sheet load failed:', e);
   }
 }
-function closeChat(){
-  document.getElementById('panel').classList.remove('open');
-  document.getElementById('launcher').classList.remove('hide');
+
+/* ── Text helpers */
+const STOP = new Set('a an the is are do does did i you we our your my me to of in on at for and or what when where who how can there any about with be this that it please tell us'.split(' '));
+const tokens = s => (s.toLowerCase().match(/[a-z0-9']+/g) || []).filter(w => !STOP.has(w));
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const linkify = s => esc(s).replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+const has = (t, words) => words.some(w => t.includes(w));
+
+/* ── Answer builders */
+function answerServiceTimes() {
+  const rows = DATA.service_times;
+  if (!rows.length) return noData('service times');
+  return '<b>Our services</b>' + rows.map(r =>
+    `<div class="item"><b>${esc(r['Service Name'] || r.Day)}</b>
+     <span class="meta">${esc(r.Day)}${r.Time ? ' · ' + esc(r.Time) : ''}${r.Location ? ' · ' + esc(r.Location) : ''}</span></div>`
+  ).join('');
 }
 
-function addMsg(text, who){
-  const el = document.createElement('div');
-  el.className = 'msg ' + who;
-  el.textContent = text;
-  document.getElementById('msgs').appendChild(el);
-  el.scrollIntoView({behavior:'smooth', block:'end'});
+function answerEvents(qTokens) {
+  const t0 = today();
+  let list = DATA.events.filter(isActive).map(r => ({ ...r, _d: parseDate(r.Date) }))
+    .filter(r => r._d && r._d >= t0).sort((a, b) => a._d - b._d);
+  if (!list.length) return 'There are no upcoming events listed right now. Please check back soon!';
+  const generic = new Set(['event','events','upcoming','happening','next','program','programs','activity','activities','coming','soon','week','month','schedule']);
+  const specific = qTokens.filter(w => !generic.has(w));
+  if (specific.length) {
+    const matched = list.filter(r => {
+      const hay = (r['Event Name'] + ' ' + (r.Description||'')).toLowerCase();
+      return specific.some(w => hay.includes(w));
+    });
+    if (matched.length) list = matched;
+  }
+  list = list.slice(0, 5);
+  return '<b>Upcoming events</b>' + list.map(r =>
+    `<div class="item"><b>${esc(r['Event Name'])}</b>
+     <span class="meta">${fmtDate(r._d)}${r.Time ? ' · ' + esc(r.Time) : ''}${r.Location ? ' · ' + esc(r.Location) : ''}</span>
+     ${r.Description ? '<div>' + linkify(r.Description) + '</div>' : ''}</div>`
+  ).join('');
 }
 
-function renderQuick(){
-  const q = document.getElementById('quick');
-  q.innerHTML = '';
-  quickOptions.forEach(o=>{
-    const b = document.createElement('button');
-    b.className = 'chip';
-    b.textContent = o.label;
-    b.onclick = () => handleInput(o.label, o.key);
-    q.appendChild(b);
+function answerStaff(qTokens) {
+  const rows = DATA.staff;
+  if (!rows.length) return noData('staff contacts');
+  const generic = new Set(['pastor','staff','contact','leader','leaders','team','email','phone','reach','call','number','church']);
+  const specific = qTokens.filter(w => !generic.has(w));
+  let list = rows;
+  const byName = rows.filter(r => specific.some(w => (r.Name + ' ' + r.Role).toLowerCase().includes(w)));
+  if (byName.length) list = byName;
+  else if (qTokens.includes('pastor')) {
+    const pastors = rows.filter(r => /pastor/i.test(r.Role));
+    if (pastors.length) list = pastors;
+  }
+  return '<b>Our team</b>' + list.map(r =>
+    `<div class="item"><b>${esc(r.Name)}</b><span class="meta">${esc(r.Role || '')}</span>
+     ${r.Email ? `<div><a href="mailto:${esc(r.Email)}">${esc(r.Email)}</a></div>` : ''}
+     ${r.Phone ? `<div><a href="tel:${esc(r.Phone.replace(/\s+/g,''))}">${esc(r.Phone)}</a></div>` : ''}</div>`
+  ).join('');
+}
+
+function answerAnnouncements() {
+  const t0 = today();
+  const list = DATA.announcements.filter(isActive).filter(r => {
+    const s = parseDate(r['Start Date']), e = parseDate(r['End Date']);
+    return (!s || s <= t0) && (!e || e >= t0);
   });
+  if (!list.length) return 'There are no announcements right now.';
+  return '<b>Announcements</b>' + list.map(r =>
+    `<div class="item"><b>${esc(r.Title)}</b><div>${linkify(r.Body || '')}</div></div>`
+  ).join('');
 }
 
-function respond(text){
-  const lower = text.toLowerCase();
-  const hit = rules.find(r => r.keys.some(k => lower.includes(k)));
-  return hit ? hit.reply() : fallback;
+function bestFaq(qTokens) {
+  let best = null, bestScore = 0;
+  for (const f of DATA.faqs) {
+    const ft = new Set(tokens(f.Question));
+    if (!ft.size) continue;
+    const overlap = qTokens.filter(w => ft.has(w)).length;
+    const score = overlap / ft.size;
+    if (overlap >= Math.min(2, ft.size) && score > bestScore) { best = f; bestScore = score; }
+  }
+  return bestScore >= 0.5 ? best : null;
 }
 
-function handleInput(displayText, forcedKey){
-  addMsg(displayText, 'user');
-  const replyText = forcedKey ? rules.find(r=>r.keys.includes(forcedKey)).reply() : respond(displayText);
-  setTimeout(()=> addMsg(replyText, 'bot'), 350);
+const noData = what => `I don't have ${what} on file yet.` + contactLine();
+const contactLine = () => CONFIG.CHURCH_CONTACT ? ` Please reach out to us at ${esc(CONFIG.CHURCH_CONTACT)}.` : '';
+
+/* ── Router */
+function respond(text) {
+  const raw = text.toLowerCase();
+  const q = tokens(text);
+
+  if (/^(hi|hello|hey|good (morning|afternoon|evening)|greetings)\b/.test(raw))
+    return 'Hello! 😊 You can ask me about our service times, upcoming events, announcements, or how to reach our team.';
+  if (/\b(thank|thanks)\b/.test(raw)) return "You're very welcome! God bless you. 🙏";
+
+  const faq = bestFaq(q);
+  if (faq) return linkify(faq.Answer);
+
+  if (has(raw, ['service','worship','sunday','church time','what time','when do you','schedule','hours','meet']) && !has(raw, ['event']))
+    return answerServiceTimes();
+  if (has(raw, ['event','upcoming','happening','program','activity','activities','youth','conference','retreat','outreach','coming up']))
+    return answerEvents(q);
+  if (has(raw, ['announce','news','update']))
+    return answerAnnouncements();
+  if (has(raw, ['pastor','staff','contact','leader','email','phone','call','reach','number','who is','team']))
+    return answerStaff(q);
+
+  // Last chance: look for an event or staff name mentioned directly
+  const ev = DATA.events.filter(isActive).find(r => q.some(w => r['Event Name'].toLowerCase().includes(w)));
+  if (ev) return answerEvents(q);
+  const st = DATA.staff.find(r => q.some(w => r.Name.toLowerCase().includes(w)));
+  if (st) return answerStaff(q);
+
+  return "I'm not sure about that one. You can ask me about service times, events, announcements, or our team." + contactLine();
 }
 
-function sendTyped(){
-  const box = document.getElementById('inputBox');
-  const val = box.value.trim();
-  if(!val) return;
-  box.value = '';
-  handleInput(val);
+/* ── Chat UI */
+const msgs = document.getElementById('messages');
+function addMsg(html, who) {
+  const d = document.createElement('div');
+  d.className = 'msg ' + who; d.innerHTML = html;
+  msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
 }
+function ask(text) {
+  text = text.trim(); if (!text) return;
+  addMsg(esc(text), 'user');
+  const typing = document.createElement('div');
+  typing.className = 'msg bot typing'; typing.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(typing); msgs.scrollTop = msgs.scrollHeight;
+  setTimeout(() => { typing.remove(); addMsg(respond(text), 'bot'); }, 450);
+}
+
+const chips = ['Service times', 'Upcoming events', 'Announcements', 'Contact the pastor'];
+const chipsEl = document.getElementById('chips');
+chips.forEach(c => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'chip'; b.textContent = c;
+  b.onclick = () => ask(c);
+  chipsEl.appendChild(b);
+});
+
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const i = document.getElementById('input');
+  ask(i.value); i.value = '';
+});
+
+/* ── Init */
+addMsg(esc(CONFIG.WELCOME), 'bot');
+loadData(true);
+setInterval(loadData, CONFIG.REFRESH_MINUTES * 60 * 1000);
 </script>
 </body>
 </html>
